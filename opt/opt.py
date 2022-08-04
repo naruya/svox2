@@ -76,7 +76,7 @@ group.add_argument('--background_reso', type=int, default=512, help='Background 
 
 
 group = parser.add_argument_group("optimization")
-group.add_argument('--n_iters', type=int, default=10 * 12800, help='total number of iters to optimize for')
+group.add_argument('--n_iters', type=int, default=5 * 12800, help='total number of iters to optimize for')
 group.add_argument('--batch_size', type=int, default=
                      5000,
                      #100000,
@@ -144,7 +144,7 @@ group.add_argument('--lr_basis_delay_mult', type=float, default=1e-2)
 group.add_argument('--rms_beta', type=float, default=0.95, help="RMSProp exponential averaging factor")
 
 group.add_argument('--print_every', type=int, default=20, help='print every')
-group.add_argument('--save_every', type=int, default=5,
+group.add_argument('--save_every', type=int, default=1,
                    help='save every x epochs')
 group.add_argument('--eval_every', type=int, default=1,
                    help='evaluate every x epochs')
@@ -476,6 +476,7 @@ while True:
         pbar = tqdm(enumerate(range(0, epoch_size, args.batch_size)), total=batches_per_epoch)
         stats = {"mse" : 0.0, "psnr" : 0.0, "invsqr_mse" : 0.0}
         for iter_id, batch_begin in pbar:
+            print(iter_id)
             gstep_id = iter_id + gstep_id_base
             if args.lr_fg_begin_step > 0 and gstep_id == args.lr_fg_begin_step:
                 grid.density_data.data[:] = args.init_sigma

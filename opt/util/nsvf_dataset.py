@@ -79,7 +79,11 @@ class NSVFDataset(DatasetBase):
                 assert False, "None of " + str(cands) + " found in data directory"
             return ""
 
-        img_dir_name = look_for_dir(["images", "image", "rgb"])
+        # img_dir_name = look_for_dir(["images", "image", "rgb"])
+        img_dir_name = look_for_dir(["images_resized", "images", "image", "rgb"])
+        print(img_dir_name)
+        print(img_dir_name)
+        print(img_dir_name)
         pose_dir_name = look_for_dir(["poses", "pose"])
         #  intrin_dir_name = look_for_dir(["intrin"], required=False)
         img_files = sorted(os.listdir(path.join(root, img_dir_name)), key=sort_key)

@@ -374,7 +374,7 @@ def main():
     scene.add_sphere("Unit Sphere", visible=False)
     scene.add_cube("Unit Cube", scale=2, visible=False)
     print('WRITING', out_dir)
-    scene.display(out_dir, world_up=world_up, cam_origin=origin, cam_center=center, cam_forward=vforward)
+    scene.display(out_dir, world_up=world_up, cam_origin=origin, cam_center=center, cam_forward=vforward, port=6006)
 
 
 
